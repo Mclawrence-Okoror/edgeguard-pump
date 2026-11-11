@@ -72,17 +72,19 @@ Refer to `diagram.json` for the Wokwi circuit configuration.
 
 ## Testing and Validation
 
-The following behaviours were verified during simulation testing:
+The following behaviours were tested in the Wokwi ESP32-S3 simulation:
 
-- [x] Pump starts when the water level reaches or falls below the configured start threshold.
-- [x] Calculated water level increases as the measured sensor distance decreases.
-- [x] Pump stops when the water level reaches or exceeds the configured stop threshold.
-- [x] Invalid ultrasonic sensor readings trigger the configured safety response and prevent unsafe pump operation.
-- [x] Failure to detect sufficient water-level progress within the configured timeout triggers pump-stall protection.
-- [x] Muting the buzzer silences the audible alarm without disabling visual fault indicators.
+- [x] Pump starts when the estimated water level reaches or falls below the configured 30% start threshold.
+- [x] Calculated water level increases as the measured ultrasonic sensor distance decreases.
+- [x] Pump stops when the estimated water level reaches or exceeds the configured 90% stop threshold.
+- [x] Invalid ultrasonic sensor readings trigger the configured safety response and prevent pump operation.
+- [x] Failure to detect sufficient water-level progress triggers the pump-stall protection mechanism.
+- [x] Muting the buzzer silences audible alerts without suppressing visual fault indicators.
 - [x] The OLED display and status LEDs reflect the current operating and fault states.
 
 **Validation environment:** Wokwi ESP32-S3 simulation using ESP-IDF and FreeRTOS.
+
+**Validation limitation:** These tests were conducted in simulation. Physical sensor accuracy, motor operation, electrical behaviour and real-world reliability have not been validated.
 
 ## Demonstration
 
