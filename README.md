@@ -70,23 +70,23 @@ Refer to `diagram.json` for the Wokwi circuit configuration.
 
 **Simulation note:** Wokwi does not automatically raise the simulated water level when the software pump turns on. Change the sensor distance manually to simulate filling. If the measured level remains unchanged, the stall-detection logic may trigger.
 
-## Testing
+## Testing and Validation
 
-The following behaviours should be checked and documented during validation:
+The following behaviours were verified during simulation testing:
 
-- [ ] Pump starts at or below the configured start threshold.
-- [ ] Decreasing sensor distance increases the calculated water level.
-- [ ] Pump stops at or above the configured stop threshold.
-- [ ] Invalid sensor readings trigger the expected fault response.
-- [ ] Lack of water-level progress triggers stall protection.
-- [ ] Muting the buzzer does not hide the visual warning.
-- [ ] OLED and LEDs reflect the current system state.
+- [x] Pump starts when the water level reaches or falls below the configured start threshold.
+- [x] Calculated water level increases as the measured sensor distance decreases.
+- [x] Pump stops when the water level reaches or exceeds the configured stop threshold.
+- [x] Invalid ultrasonic sensor readings trigger the configured safety response and prevent unsafe pump operation.
+- [x] Failure to detect sufficient water-level progress within the configured timeout triggers pump-stall protection.
+- [x] Muting the buzzer silences the audible alarm without disabling visual fault indicators.
+- [x] The OLED display and status LEDs reflect the current operating and fault states.
+
+**Validation environment:** Wokwi ESP32-S3 simulation using ESP-IDF and FreeRTOS.
 
 ## Demonstration
 
-**Video walkthrough:** To be added.
-
-**Live Wokwi simulation:** To be added.
+**Live Wokwi simulation:** https://youtu.be/F21UmB2ZjOs?si=JBa_v-ZQjGuv7U8F
 
 ## Limitations and Future Work
 
